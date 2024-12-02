@@ -1,0 +1,266 @@
+<!doctype html>
+<html>
+ <head>
+  <title>
+   Project 2
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+        h1, h2, h3 {
+            text-align: center;
+        }
+        .button {
+            display: block;
+            width: 100px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+        .thumbs-up {
+            display: block;
+            margin: 20px auto;
+            width: 100px;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="container" id="page1">
+   <h1>
+    Welcome to Project 2
+   </h1>
+   <a class="button" href="javascript:void(0);" onclick="showPage('page2')">
+    Next
+   </a>
+  </div>
+  <div class="container" id="page2" style="display:none;">
+   <h2>
+    Instructions
+   </h2>
+   <p>
+    The grade that you will get will affect the coming semester.
+   </p>
+   <p>
+    The table that you will see under it is an example of a letter that you take based on your grade.
+   </p>
+   <p>
+    The table that you will see under is not specific.
+   </p>
+   <table>
+    <tr>
+     <th>
+      Letter
+     </th>
+     <th>
+      Grade
+     </th>
+    </tr>
+    <tr>
+     <td>
+      A+
+     </td>
+     <td>
+      95 and above
+     </td>
+    </tr>
+    <tr>
+     <td>
+      A
+     </td>
+     <td>
+      89 to 94
+     </td>
+    </tr>
+    <tr>
+     <td>
+      B+
+     </td>
+     <td>
+      84 to 88
+     </td>
+    </tr>
+    <tr>
+     <td>
+      B
+     </td>
+     <td>
+      79 to 83
+     </td>
+    </tr>
+    <tr>
+     <td>
+      C+
+     </td>
+     <td>
+      74 to 78
+     </td>
+    </tr>
+    <tr>
+     <td>
+      C
+     </td>
+     <td>
+      69 to 73
+     </td>
+    </tr>
+    <tr>
+     <td>
+      D+
+     </td>
+     <td>
+      64 to 68
+     </td>
+    </tr>
+    <tr>
+     <td>
+      D
+     </td>
+     <td>
+      60 to 63
+     </td>
+    </tr>
+    <tr>
+     <td>
+      F
+     </td>
+     <td>
+      59 and under
+     </td>
+    </tr>
+   </table>
+   <a class="button" href="javascript:void(0);" onclick="showPage('page3')">
+    Next
+   </a>
+  </div>
+  <div class="container" id="page3" style="display:none;">
+   <h2>
+    Calculate Your Average
+   </h2>
+   <p>
+    Enter your grades for the following specialties:
+   </p>
+   <form id="gradeForm">
+    <label for="webDev">
+     Web Development:
+    </label>
+    <input id="webDev" max="100" min="0" name="webDev" type="number"/>
+    <br/>
+    <br/>
+    <label for="dataScience">
+     Data Science:
+    </label>
+    <input id="dataScience" max="100" min="0" name="dataScience" type="number"/>
+    <br/>
+    <br/>
+    <label for="graphicDesign">
+     Graphic Design:
+    </label>
+    <input id="graphicDesign" max="100" min="0" name="graphicDesign" type="number"/>
+    <br/>
+    <br/>
+    <label for="digitalMarketing">
+     Digital Marketing:
+    </label>
+    <input id="digitalMarketing" max="100" min="0" name="digitalMarketing" type="number"/>
+    <br/>
+    <br/>
+    <input class="button" onclick="calculateAverage()" type="button" value="Calculate"/>
+   </form>
+   <a class="button" href="javascript:void(0);" onclick="showPage('page4')">
+    Next
+   </a>
+  </div>
+  <div class="container" id="page4" style="display:none;">
+   <h2>
+    Advice
+   </h2>
+   <p>
+    Based on your average grade, here is our advice:
+   </p>
+   <p id="advice">
+   </p>
+   <img alt="A thumbs up icon indicating approval" class="thumbs-up" height="100" src="https://storage.googleapis.com/a1aa/image/LcX73pHV2lYVMFIydmesHgm5rgaKPDxLIB5NKu6uJsWAfQ2TA.jpg" width="100"/>
+  </div>
+  <script>
+   function showPage(pageId) {
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'none';
+            document.getElementById('page3').style.display = 'none';
+            document.getElementById('page4').style.display = 'none';
+            document.getElementById(pageId).style.display = 'block';
+        }
+
+        function calculateAverage() {
+            const webDev = parseFloat(document.getElementById('webDev').value) || 0;
+            const dataScience = parseFloat(document.getElementById('dataScience').value) || 0;
+            const graphicDesign = parseFloat(document.getElementById('graphicDesign').value) || 0;
+            const digitalMarketing = parseFloat(document.getElementById('digitalMarketing').value) || 0;
+
+            const average = (webDev + dataScience + graphicDesign + digitalMarketing) / 4;
+            let grade;
+
+            if (average >= 95) {
+                grade = 'A+';
+            } else if (average >= 89) {
+                grade = 'A';
+            } else if (average >= 84) {
+                grade = 'B+';
+            } else if (average >= 79) {
+                grade = 'B';
+            } else if (average >= 74) {
+                grade = 'C+';
+            } else if (average >= 69) {
+                grade = 'C';
+            } else if (average >= 64) {
+                grade = 'D+';
+            } else if (average >= 60) {
+                grade = 'D';
+            } else {
+                grade = 'F';
+            }
+
+            alert(`Your average grade is ${average}. You received a ${grade}.`);
+            document.getElementById('advice').innerText = `Based on your grade (${grade}), keep up the good work!`;
+        }
+  </script>
+ </body>
+</html>
